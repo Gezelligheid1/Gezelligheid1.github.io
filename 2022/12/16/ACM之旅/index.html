@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/my_logo.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/my_logo.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/my_logo.png">
+  <link rel="mask-icon" href="/images/my_logo.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"gezelligheid1.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="ACM之旅">
+<meta property="og:url" content="https://gezelligheid1.github.io/2022/12/16/ACM%E4%B9%8B%E6%97%85/index.html">
+<meta property="og:site_name" content="Pedestrian1&#39;s BLOG">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gezelligheid1.github.io/2022/12/16/ACM%E4%B9%8B%E6%97%85/cf%E4%B8%8A%E9%BB%84.png">
+<meta property="og:image" content="https://gezelligheid1.github.io/2022/12/16/ACM%E4%B9%8B%E6%97%85/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95.png">
+<meta property="article:published_time" content="2022-12-15T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-12-16T15:58:07.160Z">
+<meta property="article:author" content="Gezelligheid1 Pedestrian1">
+<meta property="article:tag" content="Gezelligheid1 Pedestrian1 ACMer">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gezelligheid1.github.io/2022/12/16/ACM%E4%B9%8B%E6%97%85/cf%E4%B8%8A%E9%BB%84.png">
+
+<link rel="canonical" href="https://gezelligheid1.github.io/2022/12/16/ACM%E4%B9%8B%E6%97%85/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>ACM之旅 | Pedestrian1's BLOG</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Pedestrian1's BLOG</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/introduction/src/index.html" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">27</span></a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gezelligheid1.github.io/2022/12/16/ACM%E4%B9%8B%E6%97%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Gezelligheid1 Pedestrian1">
+      <meta itemprop="description" content="Gezelligheid1 Pedestrian1 ACMer">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Pedestrian1's BLOG">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ACM之旅
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-12-16 00:00:00 / 修改时间：23:58:07" itemprop="dateCreated datePublished" datetime="2022-12-16T00:00:00+08:00">2022-12-16</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><span id="more"></span></p>
+<p>临时赶工的质量，随便看看吧</p>
+<p>2020.12.16-2022.12.16</p>
+<p>一转眼，我也到了退役的日子，今年的日子相比去年总是过得飞快，些许是更忙碌的原因，两年的ACM之旅为我带来了什么？扎实的码力，志同道合的伙伴，抑或是不健康的作息。一年前自己和队友在集训室看着学长们退役的情景仍然历历在目，想不到这么快就到了我们身上，甚至也复刻了去年7队的遗憾。</p>
+<p>2020年12月16日，我在最后一轮选拔赛中因老刘的网开一面成功进入到集训队，此后便是扎身于训练当中，起初一直只刷cf，直到5月在debug杯上被坐在旁边的阿敏n+3之后开始转向洛谷学习算法，此后确实实力大涨，在校赛中成功存活下来(反转了，阿敏不幸地短暂离开了集训队)。</p>
+<p>多校前和lmsh,soxsx组成了LSP steaming
+buns(蒸馒头/杭电12队)，一个oier(lmsh)和两个零基础，20场多校之后排名全校rk11，之后由于线上赛的原因获得了上海站的参赛资格，此后开始了一周三场的vp，这支队伍从一开始磨合度就非常良好，也经常能够封榜后出题翻盘，再加上三个人码风非常相似，所以经常能在赛中打出combo，会出现两个人甚至三个人合写一份代码的情况，也会出现一个人写一半写不下去了另一个人能接着写的情况，所以越vp越强，vp到赛前一周的状态，那时候是LSP
+steaming buns 2021年最巅峰的时期，三个人都爆发出了cf
+rating(当时队里三个1600，max rating
+1800+1800+1900)完全不匹配的实力，尤其是lmsh，借用今年和starry聊天时的描述就是lmsh成为了一个非常典型的oi选手，那个星期的lmsh在我认知中是他整个ACM生涯最强的时间段，那一周里不仅在策略上说不要让机子空下来，又在调节气氛和解决题目上起到了中流砥柱的作用，soxsx则承担了很大一部分的构造和模拟，soxsx的特点是思考问题相对学术化，经常会迸发出意想不到的灵感，而我在场上中后期经常会成为那个21开题的1，当lmsh和soxsx一起讨论题目卡住时(有时这俩会纠结于一些奇奇怪怪的地方，甚至和题目关系不大)偶尔会突然迸发出灵感解决掉自己手上的题。就这样，三个人轮流迸发出灵感，在那段时间三人打满5h的场里基本都是能达到银牌水平，后来我对当时lmsh和soxsx的评价是进入化境。</p>
+<p>2021年11月27日，上海站热身赛来临，凭借还不错的状态拿到了校内rk1(众所周知热身赛不能体现真实实力)。</p>
+<p>2021年11月28日，上海站正式赛来临，也是lmsh那一年的封神一战，那天主办方要求早上8点就到达比赛场地(但比赛时间是12:00-17:00)，所以带着半梦半醒的状态赶往了实验室，到那之后便是无事可干，后面的学长在玩单机游戏，而我因为电脑上没装什么游戏所以开始敲起了某场div2f的线段树，两个队友则在罚坐，我敲到一半敲不下去，lmsh让我不要敲了放空一下脑子，此后便是三人的罚坐时间(提前罚坐了场上就不会罚坐了)。
+直到12点比赛终于开始了，一上来两个人秒了D和E，第三道G是数学+树形dp，我推出了公式，然后lmsh听到我会公式，所以写了个calc接口给我，我稍微调了一下就过了，一波配合非常良好的combo。然后是I题，我当时并不会dp，但是一眼看出了是dp题，队里dp专精手lmsh想了一下两发就把这题过了，然后就去开了M题，一道二分图构造或者猜公式的题，开了许久没有猜出正确的结论，转向了非常困难的H题，kruskal重构树，但当时我们队并没有人学过这个算法，此时lmsh站了出来，在纸上写了一堆草稿+讲了我和soxsx完全听不懂的做法，然后上机写起了代码，留下了一脸懵逼的我和soxsx，lmsh写完wa了一发之后我看soxsx仍然处于懵逼状态就选择了自己造了一组数据，恰好找出了lmsh代码上的问题，第二发提交通过了H，此后转向了K题，构造，三个人想出了一些特殊情况之后我开始上机写暴力验证小数据，但我还没调出暴力时soxsx和lmsh突然就把所有的构造方式都想出来了，然后soxsx上机一发通过了这题，此后是90分钟的罚坐时间，B题多项式，但当时没人学过，lmsh想了一下发现不太可做，我想出了J题的一半，也知道要用bitset，但差了临门一脚，和lmsh讨论了一下无果之后三人开始合力冲M，soxsx用随机模拟的方式模拟出了n=3的情况，但到赛后发现是猜的多项式最高次有问题，所以后面公式一直猜的不对，此后也没有再过题，以rk71(校内rk3)结束上海站，也让我们创造了2021-2022赛季校内同级别队伍的最好成绩。</p>
+<p>回想起夺银的那天，去学校美食城的时候整个人也是容光焕发的样子，那一天的成绩确实振奋人心。</p>
+<p>此后一个月开始摆烂，不怎么刷题天天打游戏和水群，某一天突然发觉自己仍然有着对金牌的渴望，就又开始刷起了题的同时进入了2022年。</p>
+<p>如果说2021年是成功的一年，那么2022年可以说是失败的一年。</p>
+<p>寒假里，某算法群由于ay的出现和cupids_bow的疯狂刷题行为加剧了大家的精神内耗，所以我的状态大概就是起床玩会儿手机，吃完午饭开始上机学算法写代码，写到差不多晚上吃饭的时间，回来继续写，晚上有比赛就参加比赛，大概一周6-7天都是这个状态，也因此实力大涨时隔半年重新回到了紫名。3月左右开始了也许是整个生涯最歪的决定————学习多项式，只能说多项式是个高投入低收益的东西，在有其他知识面缺陷的情况下并不太值得花几个月的精力去学习。</p>
+<p>四月的时候由于lmsh和soxsx不知道连续摆了多久，都没能通过省赛选拔，我和zn_com,2020hduyz组成了一支临时队伍slow
+time down参加省赛，但在磨合度上并不输LSP steaming
+buns，大概有些默契本就天生形成，赛前的vp各种打穿，尤其是17th
+zjcpc，甚至以vp打赢了正式参赛的五点共圆，良好的化学反应和成绩让我们对省赛有着很大把握，可惜正式赛当天，队伍三个人轮流犯病，我和zn_com前期题出现非常大的罚时失误，导致签到题贡献了200分钟罚时，我在201分钟和zn_com打出combo解决第八题之后2020hduyz立即上机开始写第九题，可惜他没完全听懂zn_com的做法导致99分钟没能写完那题，最后差102分钟罚时夺金。</p>
+<p>省赛过后的下一星期就是天梯赛，当时我cf达到了历史新高的2000+，由于cf的出色表现老刘把我放在了2队里，那次天梯赛明显变难，模拟题的增多再加上陈越写的松针题面属实不行，所以前面浪费了很多时间，在达到227分左右时只剩下15分钟了，当时也不知道再写个暴力就能拿20多分从而夺金，所以很快就上手写正解，但是没能调出来，最后以230分收场拿下个人二等团队一等。</p>
+<p>天梯赛结束之后，由于老刘认为队里4个大二银牌oier(一共就4个oier+2个零基础)达不到金牌水平，所以他们被迫强制退役(至今认为这个决策不合理)，在上海站天神下凡的lmsh也恰好在点杀名单当中(但老刘并不知道具体情况，他对我们队的判断是上半年集体vp打得并不好，实际上是我们队都有课导致经常打一半就少一两个人，所以会出现签到题一整场没人签，中后期题却写掉了的情况，比如台北场)，此后lmsh开始去华为算法岗实习。</p>
+<p>2022年5月，我的思维达到了整个生涯最强的时期，并且在5月14日同时也是进队514天时场切2400分题目cf上黄(20届零基础仅三人上黄)，rating2165，那时候遇到2300及以下的思维题总是能想一会儿就出做法，处于整个生涯的思维巅峰状态。
+<img src="/2022/12/16/ACM%E4%B9%8B%E6%97%85/cf上黄.png"></p>
+<p>上黄之后cf就不太怎么关注了，cf刷题力度确实也弱了下来，在疯狂刷洛谷当中，整个人开始陷入套路化，从一个思维选手逐渐转变成了一个套路选手，但思维是油，算法是车，车离开了油终究会跑不动，所以也从黄掉回了紫，也为之后的失败埋下了伏笔。</p>
+<p>暑假和void_f,soxsx组成了Oceanic
+Glow(杭电11队)，先来讲讲新队友void_f(perdu)，借用和starry聊天时的话语，void_f是一个非常不典型的oier。他会在一些奇怪的地方突然拓展思路，但一旦思路错误会整个人陷入进去并且队友也会跟着陷入进去。</p>
+<p>soxsx也许是突然失去了对acm的热情，整个人开始投入到课内当中(是我课内实验的救星)，第二年除了学了计算几何之外并没有怎么做题，做题水平除了计算几何之外和2021年没什么区别，也是20届零基础里唯一一个没上过紫的，两年加起来刷了1000题，所以第二年的懈怠程度甚至让我在私聊时忍不住喷过一次。</p>
+<p>我在暑假里一度失了智，思维能力大不如黄名时期，多校时一度开不出多项式以外的中期题，那时就晚上拼了命的写题，一点两点刷题是常态，但并没有得到什么好的效果。</p>
+<p>但最致命的是打法上的冲突导致磨合非常困难，这也是在组队时完全没想到的，我一共经历了三支队伍，唯有这一支，在磨合和默契程度上都大不如以前的队伍，三个人很多时候沟通并不到位，甚至在换位置这件事上也有体现，曾经的队伍三个人的位置在赛中会随便坐，但这支并不会这样，导致很多时候三个人像各打各的，形成一种三人单挑的局面。void_f原来队伍的打法和我们上赛季队伍的打法非常不同，导致整个暑假里我尝试调整了两次策略，但效果其实都不是很好，磨合问题其实到退役都没能解决得非常良好。</p>
+<p>虽然有种种问题，但三个人终究实力还是有保证，所以偶尔即使沟通不足也能打出上限，比如多校打出两次校内rk3，但更多的是由于磨合和沟通以及自身实力原因打出非常抽象的下限，比如校内rk8/9/10，导致多校校内排名从rk4掉到rk7(区域赛打完连rk7都没了)，并且亲手丢失一次参加ccpc的机会。</p>
+<p>网络赛后我靠着爆刷了一波斜率优化dp补足了dp方面，两年来第一次顿悟dp。</p>
+<p>此后开始进入到大量vp阶段，可参考2022-2023赛季VP记录博客，可以发现又是开局猛后期萎，貌似成了这支队伍的通病，越vp越发现自己思维越来越差只会套路，队伍甚至开始卡死在签到题，今年的比赛里唯一一场vp金牌区是2021-2022
+ec-final，rk21，也vp了今年所有的CCPC，三银一铜，为了练签到专门练了两套comfest，但第二套直接死在了签到，最后一周的三场vp里有两场死在了签到，只打好了一场，Oceanic
+Glow的问题开始愈发明显，却不知道如何解决，也直接导致了icpc的失利。</p>
+<p>2022年11月13日，西安站来临，三个人没有一个人状态是正常的，签到失误也非常严重，soxsx甚至没写出签到最后我上机调出来，在2队7题时我们队甚至只有3题，两个多小时才签完6题之后三个人又开始了互演时刻，我和soxsx开A开到只剩1h我把代码写完时发现题目读错了，void_f练了一个暑假的网络流却没能切出B，三个人灾难性表现直接导致整把崩盘，甚至没打赢学弟，以铜牌结束比赛，论赛场表现肯定会被去年上海的LSP
+steaming buns吊起来打。</p>
+<p>2022年11月27日，济南站来临，也是离夺金最近的一次，但架不住犯病，那天脑子一样由于睡眠不足昏昏沉沉，做题时A这种非常擅长的题目都能算错复杂度并且少优化一个地方，同时伴随的是决策问题，void_f一开始就想到了我没加的那个优化，但是我似乎没有听进去，void_f转而和soxsx开E，void_f出现了上述提到的问题，思路歪了的同时带着soxsx一起陷了进去，后来soxsx突然灵光一现做了出来(模型非常典，也许换黄名时期的我能一眼看出来)，10分钟后我也突然发现A的优化，从而做出A，但此时已经过去127分钟了(所以正确的决策应是soxsx单独开E，我和void_f开A)，然后void_f和soxsx读完长篇大论的D后很快想出了正解，我也很快想出了C的一个解法，写了一发发现是错误的，没考虑子树相对顺序，所以开始和soxsx想C，讨论出了一个非常难写的背包回退写法，在浪费了非常多时间之后终于调出了C，交上去还被卡了时间和空间，卡完常后终于通过，此时过去了268分钟，只剩半小时开G，但是，此时其实仍然有翻盘希望，void_f很早就想出了线段树维护swap操作，soxsx也很快想出了swap次数不会多，相当于两个人拼起来就是正解，但并没有进行充分交流，soxsx选择用不够快的码速敲了一遍题面代码去验了一遍，验出结论是正确时只剩5分钟，宣告济南站以rk58遗憾打银。</p>
+<p>最后的结果是和金牌线同题数，差233分钟罚时夺金，也就是要么写签到题A题和E题时不犯病浪费那么长时间，要么写C题时不犯病，要么G题soxsx和void_f加强一下沟通，然后直接上手写，任意做到一个都能夺金，可惜的是一个都没能做到，也成为了多校校内前八支队伍里唯一一支没有夺金的队伍。</p>
+<p>整体回想一下三场区域赛，只有大二时期的上海站打得像顺风局，大三的两把都是逆风局，问题出在哪呢，我自己确实也有很大问题，大二时期非常注重思维，思维越练越强，大三开始学了一些useless的算法，思维变得套路化，从思维选手变成了套路选手，导致非常吃题目风格，队伍上的问题相对更大一些，交流并不像前两支队伍一样充分，即使到了结束都没能磨合好这个问题，再加上场上脑子犯病，三个机会里把握一个就能夺金，没把握住也确实可惜。</p>
+<p>回想一下整个生涯，两年时间，codeforces、洛谷等等平台再加上组队赛，刷了至少3000道题目，洛谷上蓝紫黑题加起来接近600题，大二区域赛银，省赛银，天梯赛个人二等，大三区域赛银，貌似自己总是拿不到最好的成绩，也许是运气不足，也许是实力不够，也许是训练方法有误。
+<img src="/2022/12/16/ACM%E4%B9%8B%E6%97%85/刷题记录.png"></p>
+<p>ACM生涯也到此结束，终于迎来了大学里第一个能休息的假期，不用再没日没夜地敲代码，倒也不错。接下来的计划大概就是寒假里尽量恢复一下实力cf回个黄，实在做不到也就算了，再做一个nonebot，然后背背八股带上lmsh一起跑路投简历下学期去实习了，希望进Iscream2001实习的公司，由于这学期期末考试变成了下学期开学考，所以额外空降的计划就是寒假好好补一下落下的课程，至于下学期的天梯赛和省赛，就看队友的意愿了，毕竟区域赛结束，也宣告ACM告一段落，自己也随之退役了。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/11/01/2015-2016%20Petrozavodsk%20Winter%20Training%20Camp,%20Moscow%20SU%20Trinity%20Contest%20Problem%20H.%20Hans%20Zimmer/" rel="prev" title="2015-2016 Petrozavodsk Winter Training Camp, Moscow SU Trinity Contest Problem H. Hans Zimmer">
+      <i class="fa fa-chevron-left"></i> 2015-2016 Petrozavodsk Winter Training Camp, Moscow SU Trinity Contest Problem H. Hans Zimmer
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/02/18/C++%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/" rel="next" title="C++智能指针">
+      C++智能指针 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Gezelligheid1 Pedestrian1</p>
+  <div class="site-description" itemprop="description">Gezelligheid1 Pedestrian1 ACMer</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button motion-element"><i class="fa fa-comment"></i>
+    Chat
+  </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Gezelligheid1" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Gezelligheid1" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Gezelligheid1 Pedestrian1</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

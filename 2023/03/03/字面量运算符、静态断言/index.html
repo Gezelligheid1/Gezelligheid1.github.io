@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/my_logo.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/my_logo.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/my_logo.png">
+  <link rel="mask-icon" href="/images/my_logo.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"gezelligheid1.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="字面量运算符、静态断言">
+<meta property="og:url" content="https://gezelligheid1.github.io/2023/03/03/%E5%AD%97%E9%9D%A2%E9%87%8F%E8%BF%90%E7%AE%97%E7%AC%A6%E3%80%81%E9%9D%99%E6%80%81%E6%96%AD%E8%A8%80/index.html">
+<meta property="og:site_name" content="Pedestrian1&#39;s BLOG">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gezelligheid1.github.io/2023/03/03/%E5%AD%97%E9%9D%A2%E9%87%8F%E8%BF%90%E7%AE%97%E7%AC%A6%E3%80%81%E9%9D%99%E6%80%81%E6%96%AD%E8%A8%80/image-20230303162944492.png">
+<meta property="og:image" content="https://gezelligheid1.github.io/2023/03/03/%E5%AD%97%E9%9D%A2%E9%87%8F%E8%BF%90%E7%AE%97%E7%AC%A6%E3%80%81%E9%9D%99%E6%80%81%E6%96%AD%E8%A8%80/image-20230303163029070.png">
+<meta property="og:image" content="https://gezelligheid1.github.io/2023/03/03/%E5%AD%97%E9%9D%A2%E9%87%8F%E8%BF%90%E7%AE%97%E7%AC%A6%E3%80%81%E9%9D%99%E6%80%81%E6%96%AD%E8%A8%80/image-20230303163049128.png">
+<meta property="og:image" content="https://gezelligheid1.github.io/2023/03/03/%E5%AD%97%E9%9D%A2%E9%87%8F%E8%BF%90%E7%AE%97%E7%AC%A6%E3%80%81%E9%9D%99%E6%80%81%E6%96%AD%E8%A8%80/image-20230303163058588.png">
+<meta property="article:published_time" content="2023-03-03T08:23:54.000Z">
+<meta property="article:modified_time" content="2023-03-03T15:35:57.975Z">
+<meta property="article:author" content="Gezelligheid1 Pedestrian1">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gezelligheid1.github.io/2023/03/03/%E5%AD%97%E9%9D%A2%E9%87%8F%E8%BF%90%E7%AE%97%E7%AC%A6%E3%80%81%E9%9D%99%E6%80%81%E6%96%AD%E8%A8%80/image-20230303162944492.png">
+
+<link rel="canonical" href="https://gezelligheid1.github.io/2023/03/03/%E5%AD%97%E9%9D%A2%E9%87%8F%E8%BF%90%E7%AE%97%E7%AC%A6%E3%80%81%E9%9D%99%E6%80%81%E6%96%AD%E8%A8%80/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>字面量运算符、静态断言 | Pedestrian1's BLOG</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Pedestrian1's BLOG</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/introduction/src/index.html" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">27</span></a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gezelligheid1.github.io/2023/03/03/%E5%AD%97%E9%9D%A2%E9%87%8F%E8%BF%90%E7%AE%97%E7%AC%A6%E3%80%81%E9%9D%99%E6%80%81%E6%96%AD%E8%A8%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Gezelligheid1 Pedestrian1">
+      <meta itemprop="description" content="Gezelligheid1 Pedestrian1 ACMer">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Pedestrian1's BLOG">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          字面量运算符、静态断言
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-03-03 16:23:54 / 修改时间：23:35:57" itemprop="dateCreated datePublished" datetime="2023-03-03T16:23:54+08:00">2023-03-03</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><span id="more"></span></p>
+<h3 id="字面量运算符">字面量运算符</h3>
+<p>字面量运算符只能以_开头，仅允许包括const char*, long double, unsigned
+long long int, char等在内的形参列表</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">length</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">double</span> value;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">enum</span> <span class="title class_">unit</span></span><br><span class="line">    &#123;</span><br><span class="line">        meter,</span><br><span class="line">        kilometer,</span><br><span class="line">        millimeter,</span><br><span class="line">        centimeter,</span><br><span class="line">        inch,</span><br><span class="line">        foot,</span><br><span class="line">        yard,</span><br><span class="line">        mile</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="type">static</span> <span class="keyword">constexpr</span> <span class="type">double</span> factors[] = &#123;</span><br><span class="line">            <span class="number">1.0</span>, <span class="number">1000.0</span>, <span class="number">1e-3</span>, <span class="number">1e-2</span>, <span class="number">0.0254</span>, <span class="number">0.3048</span>, <span class="number">0.9144</span>, <span class="number">1609.344</span></span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">explicit</span> <span class="title">length</span><span class="params">(<span class="type">double</span> v, unit u = meter)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        value = v * factors[u];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">friend</span> length <span class="keyword">operator</span>+(length lhs, length rhs)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">length</span>(lhs.value + rhs.value);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">double</span> <span class="title">get</span><span class="params">()</span> <span class="type">const</span> <span class="keyword">noexcept</span> </span>&#123; <span class="keyword">return</span> value; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">length <span class="keyword">operator</span> <span class="string">&quot;&quot;</span> _m(<span class="type">long</span> <span class="type">double</span> v)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">length</span>(v, length::meter);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">length <span class="keyword">operator</span> <span class="string">&quot;&quot;</span> _cm(<span class="type">long</span> <span class="type">double</span> v)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">length</span>(v, length::centimeter);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    std::cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    std::cout &lt;&lt; (<span class="number">1.0</span>_m + <span class="number">10.0</span>_cm).<span class="built_in">get</span>() &lt;&lt; std::endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="静态断言">静态断言</h3>
+<p>在编译期对表达式进行判断</p>
+<p><img src="/2023/03/03/%E5%AD%97%E9%9D%A2%E9%87%8F%E8%BF%90%E7%AE%97%E7%AC%A6%E3%80%81%E9%9D%99%E6%80%81%E6%96%AD%E8%A8%80/image-20230303162944492.png"></p>
+<p><img src="/2023/03/03/%E5%AD%97%E9%9D%A2%E9%87%8F%E8%BF%90%E7%AE%97%E7%AC%A6%E3%80%81%E9%9D%99%E6%80%81%E6%96%AD%E8%A8%80/image-20230303163029070.png"></p>
+<p><img src="/2023/03/03/%E5%AD%97%E9%9D%A2%E9%87%8F%E8%BF%90%E7%AE%97%E7%AC%A6%E3%80%81%E9%9D%99%E6%80%81%E6%96%AD%E8%A8%80/image-20230303163049128.png"></p>
+<p><img src="/2023/03/03/%E5%AD%97%E9%9D%A2%E9%87%8F%E8%BF%90%E7%AE%97%E7%AC%A6%E3%80%81%E9%9D%99%E6%80%81%E6%96%AD%E8%A8%80/image-20230303163058588.png"></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/C/" rel="tag"># C++</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/02/27/STL%E5%AE%B9%E5%99%A8%E7%9A%84%E4%B8%80%E4%BA%9B%E7%BB%86%E8%8A%82%E9%97%AE%E9%A2%98/" rel="prev" title="STL容器的一些细节问题">
+      <i class="fa fa-chevron-left"></i> STL容器的一些细节问题
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/03/03/%E8%BF%94%E5%9B%9E%E5%80%BC/" rel="next" title="返回值">
+      返回值 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E9%9D%A2%E9%87%8F%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.</span> <span class="nav-text">字面量运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E6%96%AD%E8%A8%80"><span class="nav-number">2.</span> <span class="nav-text">静态断言</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Gezelligheid1 Pedestrian1</p>
+  <div class="site-description" itemprop="description">Gezelligheid1 Pedestrian1 ACMer</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button motion-element"><i class="fa fa-comment"></i>
+    Chat
+  </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Gezelligheid1" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Gezelligheid1" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Gezelligheid1 Pedestrian1</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
