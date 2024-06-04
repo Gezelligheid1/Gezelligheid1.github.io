@@ -1,0 +1,59 @@
+:root {
+    --ep-c-bg-row: #f9fafc;
+    --ep-c-bg-purple: #d3dce6;
+    --ep-c-bg-purple-dark: #99a9bf;
+    --ep-c-bg-purple-light: #e5e9f2;
+}
+
+.dark {
+    --ep-c-bg-row: #18191a;
+    --ep-c-bg-purple: #46494d;
+    --ep-c-bg-purple-dark: #242526;
+    --ep-c-bg-purple-light: #667180;
+}
+
+.ep-bg-purple-dark {
+    background: var(--ep-c-bg-purple-dark);
+}
+
+.ep-bg-purple {
+    background: var(--ep-c-bg-purple);
+}
+
+.ep-bg-purple-light {
+    background: var(--ep-c-bg-purple-light);
+}
+
+.common-layout {
+
+    .el-footer,
+    .el-aside {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .el-header{
+        text-align: left;
+    }
+    .el-footer {
+        // background-color: var(--el-color-primary-light-7);
+        color: var(--el-text-color-primary);
+        text-align: center;
+    }
+
+    .el-aside {
+        // background-color: var(--el-color-primary-light-8);
+        color: var(--el-text-color-primary);
+        text-align: center;
+    }
+
+    .el-main {
+        display: grid;
+        // flex-direction: column;
+        // background-color: var(--el-color-primary-light-9);
+        color: var(--el-text-color-primary);
+        text-align: left;
+        justify-content: left;
+    }
+}
